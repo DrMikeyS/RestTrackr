@@ -1,0 +1,7 @@
+{
+  "name": "rest-trackr",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

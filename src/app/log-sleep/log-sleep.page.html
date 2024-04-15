@@ -1,0 +1,48 @@
+<!-- log-sleep.page.html -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Log Sleep Quality
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>What was your sleep like?</h2>
+  <ion-segment [(ngModel)]="sleepQuality" color="primary">
+    <ion-segment-button value="great">
+      <ion-icon [icon]="happyOutline"></ion-icon>
+      Great
+    </ion-segment-button>
+    <ion-segment-button value="ok">
+      <ion-icon [icon]="happyOutline"></ion-icon>
+      OK
+    </ion-segment-button>
+    <ion-segment-button value="poor">
+      <ion-icon [icon]="sadOutline"></ion-icon>
+      Poor
+    </ion-segment-button>
+  </ion-segment>
+  <h2>What might have impacted sleep?</h2>
+
+  <!-- Dynamic form fields for other variables -->
+  <ion-list *ngIf="variables?.length">
+    <ion-item *ngFor="let variable of variables">
+      <ion-label>{{ variable.name }}</ion-label>
+      <ng-container [ngSwitch]="variable.type">
+        <ion-toggle *ngSwitchCase="'bool'" [(ngModel)]="variable.value"></ion-toggle>
+        <ion-range *ngSwitchCase="'range'" [(ngModel)]="variable.value" [ticks]="true" [snaps]="true" [min]="0"
+          [max]="variable.range.size" color="primary">
+          <ion-label slot="start">{{ variable.range.startLabel }}</ion-label>
+          <ion-label slot="end">{{ variable.range.endLabel }}</ion-label>
+        </ion-range>
+        <!-- Add more cases for other types if needed -->
+      </ng-container>
+    </ion-item>
+  </ion-list>
+
+
+
+  <ion-button expand="block" (click)="submit()">Submit</ion-button>
+</ion-content>

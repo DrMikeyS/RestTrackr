@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      View Results
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Results</h2>
+  <table *ngIf="results && results.length > 0">
+    <thead>
+      <tr>
+        <th>Variable ID</th>
+        <th>Variable Value</th>
+        <th>Sleep count</th>
+        <th>Poor Sleep</th>
+        <th>OK Sleep</th>
+        <th>Great Sleep</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let result of results">
+        <tr>
+          <td>{{ result.variableID }}</td>
+          <td>{{ result.variableValue }}</td>
+          <td>{{ result.sleepCount }}</td>
+          <td>{{ result.poorSleepPercentage }}</td>
+          <td>{{ result.okSleepPercentage }}</td>
+          <td>{{ result.greatSleepPercentage }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <div *ngIf="!results || results.length === 0">
+    No results found.
+  </div>
+</ion-content>
