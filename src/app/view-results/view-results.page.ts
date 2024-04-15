@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { IonButton, IonContent, IonTitle, IonToolbar, IonHeader } from '@ionic/angular/standalone';
 import { ConfigService } from '../config.service';
 import { ConfigData, Variable } from '../config';
 import { IndexedDbService } from '../indexed-db.service'; // Import IndexedDbService
@@ -11,7 +11,7 @@ import { IndexedDbService } from '../indexed-db.service'; // Import IndexedDbSer
   templateUrl: './view-results.page.html',
   styleUrls: ['./view-results.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonButton, IonContent, IonTitle, IonToolbar, IonHeader, CommonModule, FormsModule]
 })
 export class ViewResultsPage implements OnInit {
 

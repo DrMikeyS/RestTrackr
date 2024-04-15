@@ -56,5 +56,22 @@ export class IndexedDbService {
       };
     });
   }
+
+  async deleteAllEntries(): Promise<void> {
+    const db = await this.initDB();
+    const transaction = db.transaction(this.storeName, 'readwrite');
+    const store = transaction.objectStore(this.storeName);
+    const request = store.clear();
+
+    return new Promise((resolve, reject) => {
+      request.onsuccess = (event) => {
+        resolve();
+      };
+
+      request.onerror = (event) => {
+        reject('Error deleting entries from IndexedDB');
+      };
+    });
+  }
 }
 

@@ -1,0 +1,23 @@
+variables:
+  - id: 1
+    name: "Eating late"
+    type: bool
+  - id: 2
+    name: "Sex"
+    type: bool
+  - id: 3
+    name: "Worry about next day"
+    type: bool
+  - id: 4
+    name: "Alcohol consumed"
+    type: "range"
+    range:
+      size: 2
+      startLabel: "None"
+      endLabel: "Heavy"
+  - id: 5
+    name: "Working late"
+    type: bool
+  - id: 6
+    name: "Home late"
+    type: bool

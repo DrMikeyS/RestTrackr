@@ -1,7 +1,7 @@
 // log-sleep.page.ts
 
 import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonSegment, IonSegmentButton, IonIcon, IonList, IonToggle, IonItem, IonRange, IonButton, IonContent, IonTitle, IonToolbar, IonHeader, IonLabel } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { happyOutline, sadOutline } from 'ionicons/icons'; // Import ionicons
 import { ConfigService } from '../config.service';
@@ -12,7 +12,7 @@ import { IndexedDbService } from '../indexed-db.service'
   selector: 'app-log-sleep',
   templateUrl: './log-sleep.page.html',
   styleUrls: ['./log-sleep.page.scss'],
-  imports: [IonicModule, FormsModule, CommonModule],
+  imports: [IonSegment, IonSegmentButton, IonIcon, IonList, IonToggle, IonItem, IonRange, IonLabel, IonButton, IonContent, IonTitle, IonToolbar, IonHeader, FormsModule, CommonModule],
   standalone: true
 })
 export class LogSleepPage {
