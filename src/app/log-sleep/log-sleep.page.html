@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" *ngIf="!hasLogToday">
   <h2>What was your sleep like?</h2>
   <ion-segment [(ngModel)]="sleepQuality" ngDefaultControl color="primary">
     <ion-segment-button value="great">
@@ -45,4 +45,9 @@
 
 
   <ion-button expand="block" (click)="submit()">Submit</ion-button>
+</ion-content>
+
+<ion-content class="ion-padding" *ngIf="hasLogToday">
+  <h2>A log for today already exists.</h2>
+  <p>You can only submit one log per day.</p>
 </ion-content>

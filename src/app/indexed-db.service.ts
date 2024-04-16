@@ -73,5 +73,23 @@ export class IndexedDbService {
       };
     });
   }
+
+  async hasLogForToday(): Promise<boolean> {
+    const today = new Date().toISOString().split('T')[0]; // Get today's date in 'YYYY-MM-DD' format
+
+    try {
+      const allEntries = await this.getAllEntries();
+      for (const entry of allEntries) {
+        const entryDate = new Date(entry.date).toISOString().split('T')[0]; // Get the date of the entry
+        if (entryDate === today) {
+          return true; // Found a log entry for today
+        }
+      }
+      return false; // No log entry found for today
+    } catch (error) {
+      console.error('Error checking log for today:', error);
+      return false;
+    }
+  }
 }
 

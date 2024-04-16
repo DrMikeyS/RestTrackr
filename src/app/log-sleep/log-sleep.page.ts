@@ -8,6 +8,8 @@ import { ConfigService } from '../config.service';
 import { ConfigData, Variable } from '../config';
 import { CommonModule } from '@angular/common';
 import { IndexedDbService } from '../indexed-db.service'
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-log-sleep',
   templateUrl: './log-sleep.page.html',
@@ -20,10 +22,19 @@ export class LogSleepPage {
   happyOutline = happyOutline;
   sadOutline = sadOutline;
   variables: Variable[] = [];
+  hasLogToday!: boolean;
 
-  constructor(private configService: ConfigService, private indexedDbService: IndexedDbService) {
+  constructor(
+    private router: Router,
+    private configService: ConfigService,
+    private indexedDbService: IndexedDbService
+  ) {
     this.sleepQuality = 'great';
     this.loadVariables();
+    this.checkIfLogForTodayExists()
+  }
+  async checkIfLogForTodayExists() {
+    this.hasLogToday = await this.indexedDbService.hasLogForToday();
   }
 
   async loadVariables() {
@@ -53,6 +64,7 @@ export class LogSleepPage {
 
     try {
       await this.indexedDbService.addEntry(entry);
+      this.router.navigate(['/home']);
     } catch (error) {
       console.error('Error saving data to IndexedDB:', error);
     }

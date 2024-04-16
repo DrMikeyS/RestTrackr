@@ -21,3 +21,12 @@ variables:
   - id: 6
     name: "Home late"
     type: bool
+  - id: 7
+    name: "Drink before bed"
+    type: bool
+  - id: 8
+    name: "Excercise"
+    type: bool
+  - id: 9
+    name: "Kids awake"
+    type: bool
