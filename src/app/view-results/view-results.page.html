@@ -17,6 +17,8 @@
         <th>Poor Sleep</th>
         <th>OK Sleep</th>
         <th>Great Sleep</th>
+        <th>variableSleepScore</th>
+        <th>relativeSleepScore</th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +30,8 @@
           <td>{{ result.poorSleepPercentage }}</td>
           <td>{{ result.okSleepPercentage }}</td>
           <td>{{ result.greatSleepPercentage }}</td>
+          <td>{{ result.variableSleepScore }}</td>
+          <td>{{ result.relativeSleepScore }}</td>
         </tr>
       </ng-container>
     </tbody>
@@ -35,4 +39,15 @@
   <div *ngIf="!results || results.length === 0">
     No results found.
   </div>
+
+
+  <h2>Results</h2>
+  <div class="bar-chart" *ngIf="results && results.length > 0">
+    <div class="bar" *ngFor="let result of results" [style.width.%]="calculateBarWidth(result.relativeSleepScore)">
+      <!-- Display the variable ID as the label on each bar -->
+      <div class="bar-label">{{ result.variableID }}</div>
+    </div>
+  </div>
+  <canvas #canvas></canvas>
+
 </ion-content>

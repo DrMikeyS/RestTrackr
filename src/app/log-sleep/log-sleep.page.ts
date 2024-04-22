@@ -34,7 +34,8 @@ export class LogSleepPage {
     this.checkIfLogForTodayExists()
   }
   async checkIfLogForTodayExists() {
-    this.hasLogToday = await this.indexedDbService.hasLogForToday();
+    //this.hasLogToday = await this.indexedDbService.hasLogForToday();
+    this.hasLogToday = false;
   }
 
   async loadVariables() {
